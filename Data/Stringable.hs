@@ -142,12 +142,12 @@ withByteStringLen :: B.ByteString -> (CString -> Int -> IO a) -> IO a
 withByteStringLen str f = BU.unsafeUseAsCStringLen str (uncurry f)
 
 instance CStringable T.Text where
-  withCStringable    = withCStringable . E.encodeUtf8
-  withCStringLenable = withCStringLenable . E.encodeUtf8
+  withCStringable    = withCStringable . E.encodeUtf8 . flip T.snoc '\0'
+  withCStringLenable = withCStringLenable . E.encodeUtf8 . flip T.snoc '\0'
 
 instance CStringable TL.Text where
-  withCStringable    = withCStringable . EL.encodeUtf8
-  withCStringLenable = withCStringLenable . EL.encodeUtf8
+  withCStringable    = withCStringable . EL.encodeUtf8 . flip TL.snoc '\0'
+  withCStringLenable = withCStringLenable . EL.encodeUtf8 . flip TL.snoc '\0'
 
 instance CStringable B.ByteString where
   withCStringable    = withByteString
