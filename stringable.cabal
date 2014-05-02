@@ -1,5 +1,5 @@
 Name:                stringable
-Version:             0.1.1
+Version:             0.1.2
 Synopsis:            A Stringable type class, in the spirit of Foldable and Traversable
 Description:         'Data.Stringable' provides a type class with a set of functions for
                      converting to and from the most often used string-linke types in
